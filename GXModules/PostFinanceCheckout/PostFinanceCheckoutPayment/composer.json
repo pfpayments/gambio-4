@@ -1,0 +1,16 @@
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/pfpayments/php-sdk"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PostFinanceCheckoutPayment\\": "PostFinanceCheckout/"
+    }
+  },
+  "require": {
+    "postfinancecheckout/sdk": "3.0.1"
+  }
+}

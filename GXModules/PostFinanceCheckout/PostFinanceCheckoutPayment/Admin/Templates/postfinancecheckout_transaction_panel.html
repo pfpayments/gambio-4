@@ -1,0 +1,98 @@
+{load_language_text section="postfinancecheckout"}
+
+<link rel="stylesheet" href="/GXModules/PostFinanceCheckout/PostFinanceCheckoutPayment/Admin/Styles/postfinancecheckout_transaction_panel.css"/>
+<div id="transaction-control">
+    <div id="loader-block">
+        <img id="loading" src="/images/loading.gif"/>
+    </div>
+    <div>
+        <button {if $transactionState !== $authorizedState}disabled{/if} id="complete" class="btn changeTransactionStatus">{$txt.transaction_complete}</button>
+        <button {if $transactionState !== $authorizedState}disabled{/if} id="cancel" class="btn changeTransactionStatus">{$txt.transaction_cancel}</button>
+        <button {if $showButtonsAfterFullfill}disabled{/if} id="refund" class="btn">{$txt.refunds}</button>
+        <button {if $showButtonsAfterFullfill}disabled{/if} target="_blank" class="btn" onclick="window.open('/admin/admin.php?do=PostFinanceCheckoutOrderAction/DownloadFile&orderId={$orderId}&action=invoice', '_blank');">{$txt.download_invoice}</button>
+        <button {if $showButtonsAfterFullfill}disabled{/if} target="_blank" class="btn" onclick="window.open('/admin/admin.php?do=PostFinanceCheckoutOrderAction/DownloadFile&orderId={$orderId}&action=package-slip', '_blank');">{$txt.download_package_slip}</button>
+    </div>
+    <div id="refund-form">
+
+        {if $showRefundsForm}
+            <div>
+                <h2>{$txt.make_a_refund}</h2>
+                <b>{$txt.amount_to_refund}:</b>   <input type="text" id="refund-amount" value="{$amountToBeRefunded}"/>
+                <a type="button" {if $showRefundNowButton}disabled{/if} id="make-refund" class="btn" href=javascript:void(null);"">{$txt.refund_now}</a>
+            </div>
+        {/if}
+
+        <div>
+            <h2>{$txt.refunds} {$xtPrice->xtcFormat($totalSumOfRefunds, true)} / {$xtPrice->xtcFormat($totalOrderAmount, true)}</h2>
+
+            <table id="refunds-details-table">
+                <thead>
+                <tr>
+                    <th class="text-right">
+                        <div class="grid">
+                            <div class="span12"></div>
+                        </div>
+                    </th>
+                    <th class="text-right">
+                        <div class="grid">
+                            <div class="span12">
+                                {$txt.amount}:
+                            </div>
+                        </div>
+                    </th>
+                    <th class="text-right">
+                        <div class="grid">
+                            <div class="span12">
+                                {$txt.refund_date}
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach $refunds as $key => $refund}
+                    <tr>
+                        <td class="text-right">
+                            <div class="grid">
+                                <div class="span12">{$key + 1}</div>
+                            </div>
+                        </td>
+                        <td class="text-right">
+                            <div class="grid">
+                                <div class="span12">{$xtPrice->xtcFormat($refund->getAmount(), true)}</div>
+                            </div>
+                        </td>
+                        <td class="text-right">
+                            <div class="grid">
+                                <div class="span12">{$refund->getCreatedAt()}</div>
+                            </div>
+                        </td>
+                    </tr>
+                {/foreach}
+                </tbody>
+                <tfooter>
+                    <tr>
+                        <th class="text-right">
+                            <div class="grid">
+                                <div class="span12">{$txt.total}</div>
+                            </div>
+                        </th>
+                        <th class="text-right">
+                            <div class="grid">
+                                <div class="span12">{$xtPrice->xtcFormat($totalSumOfRefunds, true)}</div>
+                            </div>
+                        </th>
+                        <th class="text-right">
+                            <div class="grid">
+                                <div class="span12"></div>
+                            </div>
+                        </th>
+                    </tr>
+                </tfooter>
+            </table>
+        </div>
+    </div>
+</div>
+<input id="orderId" type="hidden" value="{$orderId}"/>
+
+<script src="/GXModules/PostFinanceCheckout/PostFinanceCheckoutPayment/Admin/Javascripts/postfinancecheckout_transaction_panel.js"></script>
