@@ -7,7 +7,7 @@ use GXModules\PostFinanceCheckoutPayment\Library\{Core\Settings\Options\Integrat
 use PostFinanceCheckout\Sdk\Model\{AddressCreate, LineItemCreate, LineItemType, Transaction, TransactionCreate};
 
 use GXModules\PostFinanceCheckout\PostFinanceCheckoutPayment\Shop\Classes\Model\PostFinanceCheckoutTransactionModel;
-use Wallee\Sdk\Model\TransactionPending;
+use PostFinanceCheckout\Sdk\Model\TransactionPending;
 
 class PostFinanceCheckout_CheckoutProcessProcess extends PostFinanceCheckout_CheckoutProcessProcess_parent
 {

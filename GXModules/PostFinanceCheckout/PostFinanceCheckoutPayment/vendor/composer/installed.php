@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '28c75667784d08bf292deea519c0c940112c0f6c',
+    'reference' => 'b2e0d6cb7e2d1af2c3acbd0b696f80685d369782',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '28c75667784d08bf292deea519c0c940112c0f6c',
+      'reference' => 'b2e0d6cb7e2d1af2c3acbd0b696f80685d369782',
     ),
     'postfinancecheckout/sdk' => 
     array (
