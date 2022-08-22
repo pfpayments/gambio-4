@@ -49,7 +49,7 @@ account dashboard.
 
 ## Documentation
 
-[Documentation](https://plugin-documentation.postfinance-checkout.ch/pfpayments/gambio-4/1.0.3/docs/en/documentation.html)
+[Documentation](https://plugin-documentation.postfinance-checkout.ch/pfpayments/gambio-4/1.0.4/docs/en/documentation.html)
 
 ## License
 

@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'b2e0d6cb7e2d1af2c3acbd0b696f80685d369782',
+    'reference' => '8bd9b091254650f996334f2f992672c8c274b7f4',
     'name' => '__root__',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'b2e0d6cb7e2d1af2c3acbd0b696f80685d369782',
+      'reference' => '8bd9b091254650f996334f2f992672c8c274b7f4',
     ),
     'postfinancecheckout/sdk' => 
     array (
