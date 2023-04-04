@@ -18,6 +18,7 @@ class PostFinanceCheckout_CheckoutProcessProcess extends PostFinanceCheckout_Che
 	 */
 	public function proceed()
 	{
+		$_SESSION['gambio_hub_selection'] = $_SESSION['payment'];
 		if ($this->check_redirect()) {
 			return true;
 		}

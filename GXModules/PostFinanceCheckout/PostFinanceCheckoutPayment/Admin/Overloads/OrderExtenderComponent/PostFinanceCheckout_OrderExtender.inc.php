@@ -40,8 +40,7 @@ class PostFinanceCheckout_OrderExtender extends PostFinanceCheckout_OrderExtende
 		$contentView->set_content_data('authorizedState', TransactionState::AUTHORIZED);
 		$contentView->set_content_data('fulfillState', TransactionState::FULFILL);
 
-		$showRefundsForm = $transactionState !== PostFinanceCheckoutTransactionModel::TRANSACTION_STATE_PAID
-			&& $transactionState !== PostFinanceCheckoutTransactionModel::TRANSACTION_STATE_REFUNDED && $amountToBeRefunded > 0;
+		$showRefundsForm = $transactionState !== PostFinanceCheckoutTransactionModel::TRANSACTION_STATE_REFUNDED && $amountToBeRefunded > 0;
 		$contentView->set_content_data('showRefundsForm', $showRefundsForm);
 
 		$showButtonsAfterFullfill = $transactionState !== TransactionState::FULFILL

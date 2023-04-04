@@ -11,6 +11,6 @@
     }
   },
   "require": {
-    "postfinancecheckout/sdk": "3.0.1"
+    "postfinancecheckout/sdk": "3.2.0"
   }
 }

@@ -2,11 +2,11 @@
 
 require_once DIR_FS_CATALOG . 'inc/get_transfer_charge_text.inc.php'; // Required in older shop versions.
 
-class WalleeCheckoutConfirmationThemeContentView extends WalleeCheckoutConfirmationThemeContentView_parent
+class PostFinanceCheckoutCheckoutConfirmationThemeContentView extends PostFinanceCheckoutCheckoutConfirmationThemeContentView_parent
 {
 	public function prepare_data()
 	{
-		if (strpos($_SESSION['payment'], 'wallee') !== false) {
+		if (strpos($_SESSION['payment'], 'postfinancecheckout') !== false) {
 			$this->coo_order->info['payment_method'] = '';
 		}
 		parent::prepare_data();
