@@ -4,7 +4,10 @@ class PostFinanceCheckout_CheckoutSuccessContentControl extends PostFinanceCheck
 {
 	public function proceed()
 	{
-		$this->reset();
+		if (strpos($_SESSION['payment'] ?? '', 'postfinancecheckout') !== false) {
+			$this->reset();
+		}
+
 		parent::proceed();
 		return true;
 	}

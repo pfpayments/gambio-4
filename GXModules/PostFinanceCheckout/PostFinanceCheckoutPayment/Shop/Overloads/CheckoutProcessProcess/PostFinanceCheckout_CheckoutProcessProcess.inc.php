@@ -18,6 +18,10 @@ class PostFinanceCheckout_CheckoutProcessProcess extends PostFinanceCheckout_Che
 	 */
 	public function proceed()
 	{
+		if (strpos($_SESSION['payment'] ?? '', 'postfinancecheckout') === false) {
+			parent::proceed();
+		}
+		
 		$_SESSION['gambio_hub_selection'] = $_SESSION['payment'];
 		if ($this->check_redirect()) {
 			return true;
@@ -155,6 +159,18 @@ class PostFinanceCheckout_CheckoutProcessProcess extends PostFinanceCheckout_Che
 			$lineItem->setType(LineItemType::PRODUCT);
 			$lineItems[] = $lineItem;
 		}
+		
+		$shippingCost = floatval((string)$order['info']['shipping_cost']);
+		if ($shippingCost > 0) {
+			$lineItem = new LineItemCreate();
+			$lineItem->setName('Shipping: ' . $order['info']['shipping_method']);
+			$lineItem->setUniqueId('shipping-' . $order['info']['shipping_class']);
+			$lineItem->setSku('shipping-' . $order['info']['shipping_class']);
+			$lineItem->setQuantity(1);
+			$lineItem->setAmountIncludingTax($shippingCost);
+			$lineItem->setType(LineItemType::SHIPPING);
+			$lineItems[] = $lineItem;
+		}
 
 		$billingAddress = new AddressCreate();
 		$billingAddress->setCity($order['billing']['city']);
@@ -218,7 +234,7 @@ class PostFinanceCheckout_CheckoutProcessProcess extends PostFinanceCheckout_Che
 				$settings->getIntegration()
 			);
 
-		$chosenPaymentMethod = $this->coo_order->info['payment_method'];
+		$chosenPaymentMethod = $_SESSION['choosen_payment_method'];
 
 		return array_filter($possiblePaymentMethods, function ($possiblePaymentMethod) use ($chosenPaymentMethod) {
 				$slug = 'postfinancecheckout_' . trim(strtolower(PostFinanceCheckoutHelper::slugify($possiblePaymentMethod->getName())));
