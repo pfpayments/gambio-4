@@ -6,9 +6,11 @@ class PostFinanceCheckoutCheckoutConfirmationThemeContentView extends PostFinanc
 {
 	public function prepare_data()
 	{
-		if (strpos($_SESSION['payment'], 'postfinancecheckout') !== false) {
-			$this->coo_order->info['payment_method'] = '';
+		if (strpos($_SESSION['payment'], 'postfinancecheckout') === false) {
+			return parent::prepare_data();
 		}
+
+		$this->coo_order->info['payment_method'] = '';
 		parent::prepare_data();
 		
 		$configurationStorage = MainFactory::create('PostFinanceCheckoutStorage');

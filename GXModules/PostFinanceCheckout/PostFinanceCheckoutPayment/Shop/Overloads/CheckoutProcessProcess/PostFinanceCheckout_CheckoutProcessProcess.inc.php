@@ -20,6 +20,7 @@ class PostFinanceCheckout_CheckoutProcessProcess extends PostFinanceCheckout_Che
 	{
 		if (strpos($_SESSION['payment'] ?? '', 'postfinancecheckout') === false) {
 			parent::proceed();
+			return true;
 		}
 		
 		$_SESSION['gambio_hub_selection'] = $_SESSION['payment'];
