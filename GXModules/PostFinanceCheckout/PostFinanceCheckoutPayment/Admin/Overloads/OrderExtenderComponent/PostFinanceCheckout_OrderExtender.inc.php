@@ -21,6 +21,9 @@ class PostFinanceCheckout_OrderExtender extends PostFinanceCheckout_OrderExtende
 		$orderId = (int)$_GET['oID'];
 
 		$transaction = $transactionModel->getByOrderId($orderId);
+		if (empty($transaction)) {
+			return parent::proceed();
+		}
 
 		$transactionData = $transaction->getData();
 		$transactionInfo = $transactionData ? \json_decode($transactionData, true) : [];
