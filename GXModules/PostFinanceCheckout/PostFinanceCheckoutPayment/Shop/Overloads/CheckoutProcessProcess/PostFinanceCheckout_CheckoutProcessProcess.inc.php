@@ -47,9 +47,10 @@ class PostFinanceCheckout_CheckoutProcessProcess extends PostFinanceCheckout_Che
 		}
 		
 		if ($this->tmp_order === false) {
-			$settings = new Settings();
-			if (!$settings->isConfirmationEmailSendEnabled()) {
-				parent::send_order_mail();
+		    	$settings = new Settings();
+
+		    	if ($settings->isConfirmationEmailSendEnabled()) {
+			    $_SESSION['order_id'] = $this->order_id;
 			}
 			
 			$this->coo_payment->after_process();

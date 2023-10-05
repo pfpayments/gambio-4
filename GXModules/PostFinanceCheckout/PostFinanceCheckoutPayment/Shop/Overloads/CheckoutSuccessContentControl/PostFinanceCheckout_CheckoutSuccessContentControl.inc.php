@@ -7,6 +7,10 @@ class PostFinanceCheckout_CheckoutSuccessContentControl extends PostFinanceCheck
 		if (strpos($_SESSION['payment'] ?? '', 'postfinancecheckout') !== false) {
 			$this->reset();
 		}
+
+		if ($_SESSION['order_id'] !== null && $_SESSION['email_sent_' . $_SESSION['order_id']] !== true) {
+		    $this->sendEmail();
+		}
 		
 		parent::proceed();
 		return true;
@@ -40,4 +44,13 @@ class PostFinanceCheckout_CheckoutSuccessContentControl extends PostFinanceCheck
 		unset($_SESSION['javascriptUrl']);
 		unset($_SESSION['integration']);
 	}
+	
+	protected function sendEmail()
+	{
+	    $coo_send_order_process = MainFactory::create_object('SendOrderProcess');
+	    $coo_send_order_process->set_('order_id', $_SESSION['order_id']);
+	    $coo_send_order_process->proceed();
+	    $_SESSION['email_sent_' . $_SESSION['order_id']] = true;
+	}
+    
 }
