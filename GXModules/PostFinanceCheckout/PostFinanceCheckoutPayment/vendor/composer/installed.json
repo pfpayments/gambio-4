@@ -54,6 +54,10 @@
                 "sdk",
                 "postfinancecheckout"
             ],
+            "support": {
+                "source": "https://github.com/pfpayments/php-sdk/tree/3.2.0",
+                "issues": "https://github.com/pfpayments/php-sdk/issues"
+            },
             "install-path": "../postfinancecheckout/sdk"
         }
     ],
