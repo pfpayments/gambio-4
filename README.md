@@ -1,6 +1,6 @@
 
 
-PostFinanceCheckout Payment for Gambio 4.8
+PostFinanceCheckout Payment for Gambio 4
 =============================
 
 The PostFinanceCheckout Payment plugin wraps around the PostFinanceCheckout API. This library facilitates your interaction with various services such as transactions.
@@ -8,7 +8,7 @@ The PostFinanceCheckout Payment plugin wraps around the PostFinanceCheckout API.
 ## Requirements
 
 - PHP 7.2 to PHP 8.2
-- Gambio 4.5 to Gambio 4.8
+- Gambio 4.5 to Gambio 4.9
 
 We only support the Gambio standard checkout (without modifications)
 
@@ -57,7 +57,7 @@ account dashboard.
 
 ## Documentation
 
-[Documentation](https://plugin-documentation.postfinance-checkout.ch/pfpayments/gambio-4/1.0.23/docs/en/documentation.html)
+[Documentation](https://plugin-documentation.postfinance-checkout.ch/pfpayments/gambio-4/1.0.24/docs/en/documentation.html)
 
 ## License
 
