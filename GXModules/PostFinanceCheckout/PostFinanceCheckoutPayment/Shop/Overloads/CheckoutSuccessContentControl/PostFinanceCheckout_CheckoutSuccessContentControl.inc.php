@@ -23,6 +23,7 @@ class PostFinanceCheckout_CheckoutSuccessContentControl extends PostFinanceCheck
 		}
 
 		parent::proceed();
+		return;
 	}
 
 	public function reset()

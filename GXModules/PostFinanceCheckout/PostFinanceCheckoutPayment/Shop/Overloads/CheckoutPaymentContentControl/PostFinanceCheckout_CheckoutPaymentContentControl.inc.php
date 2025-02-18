@@ -2,6 +2,7 @@
 
 use GXModules\PostFinanceCheckoutPayment\Library\{Core\Settings\Options\Integration, Core\Settings\Struct\Settings};
 use PostFinanceCheckout\Sdk\Model\{AddressCreate, Transaction, TransactionCreate};
+use GXModules\PostFinanceCheckoutPayment\Library\Helper\PostFinanceCheckoutHelper;
 
 class PostFinanceCheckout_CheckoutPaymentContentControl extends PostFinanceCheckout_CheckoutPaymentContentControl_parent
 {
@@ -10,7 +11,7 @@ class PostFinanceCheckout_CheckoutPaymentContentControl extends PostFinanceCheck
 	    $settings = new Settings();
 	    $createdTransaction = $this->createRemoteTransaction($settings);
 	    $_SESSION['createdTransactionId'] = $createdTransaction->getId();
-		
+
 		$_SESSION['gm_error_message'] = $this->getErrorMessage();
 		return parent::proceed();
     }
@@ -38,7 +39,7 @@ class PostFinanceCheckout_CheckoutPaymentContentControl extends PostFinanceCheck
 
 	    return $transaction->getUserFailureMessage();
     }
-	
+
 	private function createRemoteTransaction(Settings $settings): Transaction
 	{
 		$lineItems = [];
@@ -54,38 +55,38 @@ class PostFinanceCheckout_CheckoutPaymentContentControl extends PostFinanceCheck
 		]);
 		$transactionPayload->setSpaceViewId($settings->getSpaceViewId());
 		$transactionPayload->setAutoConfirmationEnabled(getenv('POSTFINANCECHECKOUT_AUTOCONFIRMATION_ENABLED') ?: false);
-		
+
 		if ($settings->getIntegration() === Integration::PAYMENT_PAGE) {
-			$paymentMethodConfigurationId = $this->getPaymentMethodConfigurationId();
+			$paymentMethodConfigurationId = PostFinanceCheckoutHelper::getPaymentMethodConfigurationId();
 			if ($paymentMethodConfigurationId) {
 				$transactionPayload->setAllowedPaymentMethodConfigurations([$paymentMethodConfigurationId]);
 			}
 		}
-		
+
 		$transactionPayload->setSuccessUrl(xtc_href_link(FILENAME_CHECKOUT_SUCCESS, '', 'SSL'));
 		$transactionPayload->setFailedUrl(xtc_href_link(FILENAME_CHECKOUT_PAYMENT . '?payment_error', '', 'SSL'));
 		$createdTransaction = $settings->getApiClient()->getTransactionService()->create($settings->getSpaceId(), $transactionPayload);
-		
+
 		return $createdTransaction;
 	}
-	
+
 	private function getBillingAddress(): AddressCreate
 	{
 		$billingAddress = new AddressCreate();
 		$billingAddress->setCountry($_SESSION['customer_country_iso']);
 		$billingAddress->setFamilyName($_SESSION['customer_last_name']);
 		$billingAddress->setGivenName($_SESSION['customer_first_name']);
-		
+
 		return $billingAddress;
 	}
-	
+
 	private function getShippingAddress(): AddressCreate
 	{
 		$shippingAddress = new AddressCreate();
 		$shippingAddress->setCountry($_SESSION['customer_country_iso']);
 		$shippingAddress->setFamilyName($_SESSION['customer_last_name']);
 		$shippingAddress->setGivenName($_SESSION['customer_first_name']);
-		
+
 		return $shippingAddress;
 	}
 }

@@ -57,7 +57,7 @@ account dashboard.
 
 ## Documentation
 
-[Documentation](https://plugin-documentation.postfinance-checkout.ch/pfpayments/gambio-4/1.0.24/docs/en/documentation.html)
+[Documentation](https://plugin-documentation.postfinance-checkout.ch/pfpayments/gambio-4/1.0.25/docs/en/documentation.html)
 
 ## License
 

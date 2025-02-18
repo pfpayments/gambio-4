@@ -32,12 +32,12 @@ class PostFinanceCheckoutModuleCenterModuleController extends AbstractModuleCent
 		$template = $this->getTemplateFile('postfinancecheckout/PostFinanceCheckoutPayment/Admin/Html/postfinancecheckout_configuration.html');
 		$integrations = [
 			[
-				'id' => 'iframe',
-				'name' => $this->languageTextManager->get_text('integration.iframe', 'postfinancecheckout')
+				'id' => 'payment_page',
+				'name' => $this->languageTextManager->get_text('integration.payment_page', 'postfinancecheckout'),
 			],
 			[
-				'id' => 'payment_page',
-				'name' => $this->languageTextManager->get_text('integration.payment_page', 'postfinancecheckout')
+				'id' => 'iframe',
+				'name' => $this->languageTextManager->get_text('integration.iframe', 'postfinancecheckout')
 			],
 		];
 
