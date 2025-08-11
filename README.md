@@ -1,9 +1,9 @@
 
 
-PostFinanceCheckout Payment for Gambio 4
+PostFinance Checkout Plugin for Gambio 4
 =============================
 
-The PostFinanceCheckout Payment plugin wraps around the PostFinanceCheckout API. This library facilitates your interaction with various services such as transactions.
+The PostFinance Checkout plugin wraps around the PostFinance Checkout API. This library facilitates your interaction with various services such as transactions.
 
 ## Requirements
 
@@ -35,29 +35,29 @@ composer install
 
 6. Click on Toolbox > Clear Cache and clear all caches
 
-7. Click on Modules > Module Center > PostFinanceCheckout Payment
+7. Click on Modules > Module Center > PostFinance Checkout Payment
 
 8. Install the module and clear the cache again (repeat step 5)
 
-9. Select Modules > Module Center > PostFinanceCheckout Payment again and click Edit
+9. Select Modules > Module Center > PostFinance Checkout Payment again and click Edit
 
-10. Enter correct data from PostFinanceCheckout API and click Save. Payment methods will be synchronised
+10. Enter correct data from PostFinance Checkout API and click Save. Payment methods will be synchronised
 
 11. Navigate To Modules -> Payment Systems
 
-12. Click on "Miscellaneous" tab and find "added modules" and click the PostFinanceCheckout Payment.
+12. Click on "Miscellaneous" tab and find "added modules" and click the PostFinance Checkout Payment.
 
-13. Install the PostFinanceCheckout Payment System
+13. Install the PostFinance Checkout Payment System
 
-14. Click Edit, select payment methods that you want to use and save configuration (Payment methods are synchronized from PostFinanceCheckout and only if they are enabled)
+14. Click Edit, select payment methods that you want to use and save configuration (Payment methods are synchronized from PostFinance Checkout and only if they are enabled)
 
 ## Usage
-The library needs to be configured with your account's space id, user id, and application key which are available in your PostFinanceCheckout
+The library needs to be configured with your account's space id, user id, and application key which are available in your PostFinance Checkout
 account dashboard.
 
 ## Documentation
 
-[Documentation](https://plugin-documentation.postfinance-checkout.ch/pfpayments/gambio-4/1.0.25/docs/en/documentation.html)
+[Documentation](https://plugin-documentation.postfinance-checkout.ch/pfpayments/gambio-4/1.0.26/docs/en/documentation.html)
 
 ## License
 
