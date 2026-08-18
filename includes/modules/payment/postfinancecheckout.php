@@ -86,7 +86,7 @@ class postfinancecheckout_ORIGIN
         $paymentName = $this->title;
         foreach ($_SESSION['possiblePaymentMethods'] as $paymentMethod) {
             $slug = 'postfinancecheckout_' . trim(strtolower(PostFinanceCheckoutHelper::slugify($paymentMethod->getName())));
-            if ($slug === $_SESSION['choosen_payment_method']) {
+            if ($slug === $_SESSION['chosen_payment_method']) {
                 $paymentName = $paymentMethod->getName();
                 $_SESSION['payment_methods_title'] = $paymentName;
             }

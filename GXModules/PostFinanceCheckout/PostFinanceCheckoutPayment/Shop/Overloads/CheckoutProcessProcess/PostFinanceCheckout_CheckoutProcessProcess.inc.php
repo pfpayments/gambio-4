@@ -133,7 +133,7 @@ class PostFinanceCheckout_CheckoutProcessProcess extends PostFinanceCheckout_Che
             $lineItem->setUniqueId($product['id']);
             $lineItem->setSku($product['id']);
             $lineItem->setQuantity($product['qty']);
-            $lineItem->setAmountIncludingTax(floatval((string)$product['final_price']));
+            $lineItem->setAmountIncludingTax(round((float)$product['final_price'], 2));
             $lineItem->setType(LineItemType::PRODUCT);
             $lineItems[] = $lineItem;
         }
@@ -210,7 +210,7 @@ class PostFinanceCheckout_CheckoutProcessProcess extends PostFinanceCheckout_Che
      */
     private function getShippingLineItem(array $order): ?LineItemCreate
     {
-        $shippingCost = floatval((string)$order['info']['shipping_cost']);
+        $shippingCost = round((float)$order['info']['shipping_cost'], 2);
         if ($shippingCost > 0) {
             $lineItem = new LineItemCreate();
             $lineItem->setName('Shipping: ' . $order['info']['shipping_method']);
@@ -321,7 +321,7 @@ class PostFinanceCheckout_CheckoutProcessProcess extends PostFinanceCheckout_Che
                 $settings->getIntegration()
             );
 
-        $chosenPaymentMethod = $_SESSION['choosen_payment_method'];
+        $chosenPaymentMethod = $_SESSION['chosen_payment_method'];
 
         return array_filter($possiblePaymentMethods, function ($possiblePaymentMethod) use ($chosenPaymentMethod) {
             $slug = 'postfinancecheckout_' . trim(strtolower(PostFinanceCheckoutHelper::slugify($possiblePaymentMethod->getName())));
