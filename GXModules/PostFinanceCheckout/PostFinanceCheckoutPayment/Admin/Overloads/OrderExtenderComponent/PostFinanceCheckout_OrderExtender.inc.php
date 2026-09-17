@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 use PostFinanceCheckout\Sdk\Model\TransactionState;
+use GXModules\PostFinanceCheckout\PostFinanceCheckoutPayment\Admin\Classes\PostFinanceCheckoutPageToken;
 use GXModules\PostFinanceCheckout\PostFinanceCheckoutPayment\Shop\Classes\Model\PostFinanceCheckoutTransactionModel;
 use GXModules\PostFinanceCheckout\PostFinanceCheckoutPayment\Shop\Classes\Model\PostFinanceCheckoutRefundModel;
 
@@ -29,6 +30,7 @@ class PostFinanceCheckout_OrderExtender extends PostFinanceCheckout_OrderExtende
 		$transactionInfo = $transactionData ? \json_decode($transactionData, true) : [];
 		$transactionState = $transaction->getState();
 		$contentView->set_content_data('orderId', $orderId);
+		$contentView->set_content_data('pageToken', PostFinanceCheckoutPageToken::get());
 
 		$refunds = PostFinanceCheckoutRefundModel::getRefunds($orderId);
 		$totalRefundsAmount = PostFinanceCheckoutRefundModel::getTotalRefundsAmount($refunds);

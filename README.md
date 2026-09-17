@@ -1,6 +1,6 @@
 
 
-PostFinance Checkout Plugin for Gambio 4
+PostFinance Checkout Plugin for Gambio
 =============================
 
 The PostFinance Checkout plugin wraps around the PostFinance Checkout API. This library facilitates your interaction with various services such as transactions.
@@ -9,6 +9,7 @@ The PostFinance Checkout plugin wraps around the PostFinance Checkout API. This 
 
 - PHP 7.2 to PHP 8.2
 - Gambio 4.5 to Gambio 4.9
+- Gambio 26.x
 
 We only support the Gambio standard checkout (without modifications)
 
@@ -19,7 +20,7 @@ We only support the Gambio standard checkout (without modifications)
 ### Manual Installation
 
 
-1. Alternatively you can download the package in its entirety. The [Releases](../../releases) page lists all stable versions.
+1. You can download the package in its entirety. The [Releases](../../releases) page lists all stable versions.
 
 2. Uncompress the zip file you download
 
@@ -34,6 +35,26 @@ composer install
 5. Login to Admin Panel
 
 6. Click on Toolbox > Clear Cache and clear all caches
+
+### for Gambio 26.x
+
+7. Click on Store
+
+8. Find PostFinance Checkout Payment and click on it
+
+9. Clear the cache again (repeat step 5)
+
+10. Select Modules > Module Center > PostFinance Checkout Payment again and click Edit
+
+11. Enter correct data from PostFinance Checkout API and click Save. Payment methods will be synchronised
+
+12. Navigate To Settings -> Payment Systems -> Added Modules -> PostFinance Checkout Payment
+
+13. Install the PostFinance Checkout Payment System
+
+14. Click Edit, select payment methods that you want to use and save configuration (Payment methods are synchronized from PostFinance Checkout and only if they are enabled)
+
+### For Gambio 4.x
 
 7. Click on Modules > Module Center > PostFinance Checkout Payment
 
@@ -57,7 +78,7 @@ account dashboard.
 
 ## Documentation
 
-[Documentation](https://plugin-documentation.postfinance-checkout.ch/pfpayments/gambio-4/1.0.31/docs/en/documentation.html)
+[Documentation](https://plugin-documentation.postfinance-checkout.ch/pfpayments/gambio-4/1.0.32/docs/en/documentation.html)
 
 ## License
 
